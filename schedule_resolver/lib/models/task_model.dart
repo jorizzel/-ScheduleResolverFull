@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 
 class TaskModel {
-
   final String id;
   final String title;
   final String category;
@@ -28,13 +26,18 @@ class TaskModel {
   });
 
   Map<String, dynamic> toJson() {
+    final startH = startTime.hour.toString().padLeft(2, '0');
+    final startM = startTime.minute.toString().padLeft(2, '0');
+    final endH = endTime.hour.toString().padLeft(2, '0');
+    final endM = endTime.minute.toString().padLeft(2, '0');
+
     return {
       'id': id,
       'title': title,
       'category': category,
       'date': date.toIso8601String().split('T').first,
-      'startTime': '\${startTime.hour}:\${startTime.minute}',
-      'endTIme': '\${endTime.hour}:\${endTime.minute}',
+      'startTime': '$startH:$startM',
+      'endTime': '$endH:$endM',
       'urgency': urgency,
       'importance': importance,
       'estimatedEffortHours': estimatedEffortHours,

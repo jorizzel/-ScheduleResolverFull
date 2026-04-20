@@ -3,10 +3,10 @@ import '../models/task_model.dart';
 import 'package:uuid/uuid.dart';
 
 class ScheduleProvider extends ChangeNotifier{
-  final List<TaskModel> _task =[]; //private only tha task model objects
+  final List<TaskModel> _tasks =[]; 
   final Uuid _uuid = const Uuid();
 
-  List<TaskModel> get task => _task;
+  List<TaskModel> get tasks => _tasks;
 
   void addTask({
     required String title,
@@ -31,16 +31,11 @@ class ScheduleProvider extends ChangeNotifier{
       estimatedEffortHours: estimatedEffortHours,
       energyLevel: energyLevel,
     );
-    _task.add(newTask);
+    _tasks.add(newTask);
     notifyListeners();
   }
   void removeTask(String taskId) {
-    _task.removeWhere((task) => task.id == taskId);
+    _tasks.removeWhere((task) => task.id == taskId);
     notifyListeners();
   }
 }
-
-
-
-
-
